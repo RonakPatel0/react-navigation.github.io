@@ -8,8 +8,8 @@ You can listen to various events emitted by React Navigation to get notified of 
 
 There are 3 core events:
 
-- `focus` - This event is emitted when the screen comes into focus
-- `blur` - This event is emitted when the screen goes out of focus
+- `didFocus` - This event is emitted when the screen comes into focus
+- `didBlur` - This event is emitted when the screen goes out of focus
 - `state` (advanced) - This event is emitted when the navigator's state changes
 
 Apart from these, each navigator can emit their own custom events. For example, stack navigator emits `transitionStart` and `transitionEnd` events, tab navigator emits `tabPress` event etc. You can find details about the events emitted on the individual navigator's documentation.
@@ -44,7 +44,7 @@ Normally, you'd add an event listener in `React.useEffect` for function componen
 ```js
 function Profile({ navigation }) {
   React.useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
+    const unsubscribe = navigation.addListener('didFocus', () => {
       // do something
     });
 
@@ -62,7 +62,7 @@ For class components, you can add the event in the `componentDidMount` lifecycle
 ```js
 class Profile extends React.Component {
   componentDidMount() {
-    this._unsubscribe = navigation.addListener('focus', () => {
+    this._unsubscribe = navigation.addListener('didFocus', () => {
       // do something
     });
   }
